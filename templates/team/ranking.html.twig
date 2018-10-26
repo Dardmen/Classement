@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{{ asset('dist/css/ranking.css') }}">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js">
+    </script>
+    <title></title>
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="http://127.0.0.1:8000/">LeaderBoard</a>
+        </div>
+    </div>
+</nav>
+<table id="" class="table table-striped table-bordered table-sm" cellspacing="O" width="100%">
+    <thead>
+    <th class="th-sm">Name
+        <i class="fa fa-sort float-right" aria-hidden="true"></i></th>
+    <th class="th-sm">Skill
+        <i class="fa fa-sort float-right" aria-hidden="true"></i></th>
+    <th class="th-sm">Victory
+        <i class="fa fa-sort float-right" aria-hidden="true"></i></th>
+    <th class="th-sm">Defeat
+        <i class="fa fa-sort float-right" aria-hidden="true"></i></th>
+    </thead>
+    <tbody>
+    {% for team in teams %}
+        <tr style="color: rgb(58, 179, 255)">
+            <td><a style="color: #666666" href="http://127.0.0.1:8000/team/index?&id={{ team.getId() }}">{{ team.name }}</a>
+            </td>
+            <td style="color: #666666">{{ team.getSkillMu() }}</td>
+            <td style="color: #666666">{{ victory[team.getId()] }}</td>
+            <td style="color: #666666">{{ defeat[team.getId()] }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(() => {
+        $('table').DataTable({
+            "order": [1, "desc"]
+        });
+        $('.dataTables_length').addClass('bs-select');
+    });
+</script>
+</body>
+</html>

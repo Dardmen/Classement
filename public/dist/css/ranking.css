@@ -1,0 +1,15 @@
+body {
+    background-color: #212529;
+}
+
+.dataTables_wrapper {
+    padding: 5rem 10rem;
+}
+
+.dataTables_wrapper *:not(select):not(input) {
+    color: white;
+}
+
+.dataTables_info {
+    color: white !important;
+}
